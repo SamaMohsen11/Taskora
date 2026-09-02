@@ -29,6 +29,12 @@ export default function Page() {
              <h1>0</h1>
           </div>
         </div>
+
+        <div className="btns">
+            <button>ALL</button>
+            <button>Completed</button>
+            <button>UnCompleted</button>
+        </div>
       </div>
     </>
   );

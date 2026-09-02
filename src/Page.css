@@ -1,7 +1,9 @@
 .content{
     width: 80%;
-    /* background: red; */
-
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  
 }
 .content .header{
     display: flex;
@@ -10,6 +12,10 @@
     width: 250px;
     height: 60px;
     /* background:gray; */
+   
+}
+.header p{
+    color: var(--light-text-secondary);
 }
 .content .cards{
     display: flex;
@@ -20,6 +26,7 @@
     /* background: gold; */
     /* gap: 10px; */
     margin-top: 20px;
+    cursor: pointer;
 }
 .cards >div{
     width: 300px;
@@ -87,10 +94,6 @@ color: var(--warning);
   background: linear-gradient(to bottom, #FFF9F0, #FFF0DD);
 }
 
-
-
-
-
 .cards > div:nth-child(1):hover {
   background: linear-gradient(to bottom, #F0EBFF, #E1D9FF);
   transform: translateY(-5px);
@@ -108,4 +111,62 @@ color: var(--warning);
   background: linear-gradient(to bottom, #FFF4E4, #FDE7CA);
   transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(245, 166, 35, 0.15);
+}
+.btns{
+    /* background: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-top:50px ; */
+    height: 30px;
+    gap: 20px;
+}
+.btns button{
+    width: 150px;
+    /*padding:;
+    verticalhorizontal*/
+    padding:5px 5px;
+    border-radius:15px ;
+    -webkit-border-radius:15px ;
+    -moz-border-radius:15px ;
+    -ms-border-radius:15px ;
+    -o-border-radius:15px ;
+    border: none;
+    background: var(--light-background);
+    cursor: pointer;
+    transition: 0.4s all ease;
+    -webkit-transition: 0.4s all ease;
+    -moz-transition: 0.4s all ease;
+    -ms-transition: 0.4s all ease;
+    -o-transition: 0.4s all ease;
+}
+.btns button:nth-child(1){
+    border: 2px solid var(--primary);
+    color: var(--primary);
+}
+.btns button:nth-child(2){
+    border: 2px solid var(--success);
+    color: var(--success);
+}
+.btns button:nth-child(3){
+    border: 2px solid var(--warning);
+    color: var(--warning);
+   
+}
+.btns button:hover{
+      transform: translateY(-5px);
+    -webkit-transform: translateY(-5px);
+    -moz-transform: translateY(-5px);
+    -ms-transform: translateY(-5px);
+    -o-transform: translateY(-5px);
+      color: white;
+}
+.btns button:nth-child(1):hover{
+    background: var(--primary);  
+}
+.btns button:nth-child(2):hover{
+    background: var(--success);
+}
+.btns button:nth-child(3):hover{
+    background: var(--warning);
 }
