@@ -1,0 +1,42 @@
+:root {
+  /* Light Mode */
+
+  --light-background: #F7FBFA;
+  --light-surface: #FFFFFF;
+
+  --primary: #5B6DF6;
+  --primary-light: #EEF2FF;
+
+  --light-text-primary: #111827;
+  --light-text-secondary: #687280;
+
+  --light-border: #E5E7EB;
+
+  --success: #22C55E;
+  --warning: #F59EDB;
+  --danger: #EF4444;
+  --warning:#E59E0B;
+
+
+  
+   
+      
+/* Dark Mode*/
+  --dark-background: #0F1115;
+  --dark-surface: #1A1F2B;
+
+  --dark-primary-light: #26283A;
+
+  --dark-text-primary: #E5E7EB;
+  --dark-text-secondary: #9CA3AF;
+
+  --dark-border: #283038;
+}
+
+main{
+  display: flex;
+  justify-content: space-between;
+  /* background: red; */
+  margin-top: 50px;
+}
+
