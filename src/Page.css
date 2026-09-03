@@ -223,7 +223,23 @@ color: var(--warning);
     background: var(--primary-hover);
 }
 
-.add-task div input:focus {
+input:focus {
     border-color: #374151;
   outline: none;
+}
+
+.pageinput{
+    border: none;
+    background: #F7FBFA;
+    height: 40px;
+   /* background: red; */
+   font-size: 30px;
+    color: black;
+    font-weight: bold;
+
+}
+.pageinput::placeholder {
+  font-size: 30px;
+  color: black;
+  font-weight: bold;
 }

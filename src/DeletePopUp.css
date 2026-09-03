@@ -1,0 +1,90 @@
+
+.popup{
+position: fixed;
+inset: 0;
+display: flex;
+justify-content: center;
+align-items: center;
+/* background: red; */
+z-index: 1000000;
+
+}
+.popup-content h3 {
+    text-align: center;
+}
+.popup-content{
+    width: 25%;
+    height: 35%;
+    background: var();
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-items: center;
+    gap: 20px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    background: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+}
+.div-btns{
+    width: 80%;
+    height: 30px;
+    /* background: red; */
+    display: flex;
+    /* gap: 5px; */
+    justify-content: space-evenly;
+}
+.div-btns button{
+    width: 100px;
+    height: 100%;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+.div-btns button:nth-child(1){
+    background: #F9FAFB;
+}
+.div-btns button:nth-child(2){
+    background: var(--danger);
+    color: white;
+}
+.div-btns button:nth-child(1):hover{
+  background: #F3F4F6;;
+}
+.div-btns button:nth-child(2):hover{
+    background:var(--danger-hover) ;
+}
+.popup-content div:nth-child(1){
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    height: 40px;
+}
+.popup-content div:nth-child(1) button{
+    border: none;
+background: none;
+cursor: pointer;
+}
+.delete-icon{
+    background:#FEE2E2;
+    border-radius:50% ;
+    -webkit-border-radius:50% ;
+    -moz-border-radius:50% ;
+    -ms-border-radius:50% ;
+    -o-border-radius:50% ;
+    padding:10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+   

@@ -61,11 +61,24 @@ function addtask() {
 
   setTask("");
 }
+
+function updatePageName(value) {
+  if (!value.trim()) return;
+
+  setPageData((prev) =>
+    prev.map((page) =>
+      page.id === Number(pageId)
+        ? { ...page, title: value }
+        : page
+    )
+  );
+}
   return (
     <>
       <div className="content">
         <div className="header-page">
-         <h1>{currentPage?.title || "New Page"}</h1>
+         {!currentPage?.title?  <input key={pageId} className="pageinput"placeholder="New Page"  onKeyDown={(e)=>{if(e.key==="Enter"){ updatePageName(e.target.value);
+}}}/>: <h1>{currentPage.title}</h1>}
           <p>stay focused and get things done</p>
         </div>
 

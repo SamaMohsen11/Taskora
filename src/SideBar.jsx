@@ -19,11 +19,11 @@ export default function SideBar({open}) {
  const handleNewPage = () => {
   const newPage = {
     id: Date.now(),
-    title: "New Page",
+    title: "",
     tasks: []
   };
 
-  setPageData([...pageData, newPage]);
+   setPageData((prev) => [...prev, newPage]);
 
  navigate(`/page/${newPage.id}`);
 };
@@ -32,13 +32,13 @@ export default function SideBar({open}) {
     const [light,setLight]=useState(true)
     const {pageData,setPageData}=useContext(pages);
     const data=pageData.map((page)=>{
-    return<div>
+    return<div   key={page.id}>
        <Link
-      key={page.id}
+    
       to={`/page/${page.id}`}
       className="page-link"
     >
-      <h4>{page.title}</h4>
+   <h4>{page.title || "New Page"}</h4>
     </Link>
     </div>
     })
