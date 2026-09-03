@@ -1,2 +1,2 @@
 import { createContext } from "react";
-const pages=createContext([]);
+ export const pages=createContext();

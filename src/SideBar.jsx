@@ -5,12 +5,43 @@ import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import Switch from '@mui/material/Switch';
-
 import { useState } from "react";
+import {pages} from "./Contexts/PagesContext"
+import { useContext } from "react";
+
+
+import { Link,useNavigate } from "react-router-dom";
+
 
 
 export default function SideBar({open}) {
+ const navigate= useNavigate()
+ const handleNewPage = () => {
+  const newPage = {
+    id: Date.now(),
+    title: "New Page",
+    tasks: []
+  };
+
+  setPageData([...pageData, newPage]);
+
+ navigate(`/page/${newPage.id}`);
+};
+
+
     const [light,setLight]=useState(true)
+    const {pageData,setPageData}=useContext(pages);
+    const data=pageData.map((page)=>{
+    return<div>
+       <Link
+      key={page.id}
+      to={`/page/${page.id}`}
+      className="page-link"
+    >
+      <h4>{page.title}</h4>
+    </Link>
+    </div>
+    })
   return (
     <div className="sidebar">
       <Drawer
@@ -28,10 +59,11 @@ export default function SideBar({open}) {
           overflow: "hidden",
            top: "70px",
           height: "calc(100vh - 80px)",
-        borderTop: "1px solid var(--dark-text-secondary)",
-  borderBottom: "1px solid var(--dark-text-secondary)",
-  borderRight: "1px solid var(--dark-text-secondary)",
+        borderTop: "1px solid var(--light-border)",
+  borderBottom: "1px solid var(--light-border)",
+  borderRight: "1px solid var(--light-border)",
   borderRadius:"10px",
+   boxShadow: "0 2px 5px rgba(0, 0, 0, 0.08)",
           
         }
       }}
@@ -43,7 +75,15 @@ export default function SideBar({open}) {
         <div className="menu">
          
 
-     <div><h4> <AddCircleRoundedIcon style={{color:"var(--primary)"}}/>New Page</h4></div>
+     <div>
+<button className="new-page-btn" onClick={handleNewPage}>
+  <AddCircleRoundedIcon className="addicon"  /><h2>New Page</h2></button>
+ 
+
+      <div className="pagesdata">
+        {data}
+      </div>
+     </div>
 
   </div>
   

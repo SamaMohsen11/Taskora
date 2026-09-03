@@ -58,3 +58,6 @@
 .delete:hover {
   color: var( --danger-hover);
 }
+.left.check{
+    text-decoration: line-through;
+}

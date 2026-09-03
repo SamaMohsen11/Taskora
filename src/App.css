@@ -92,3 +92,13 @@ justify-content: space-between;
 .toggle-btn:hover{
   background: var(--primary-hover);
 }
+
+
+a{
+  text-decoration: none;
+color: var(--primary);
+cursor: pointer;
+}
+a:hover{
+  color: var(--primary-hover);
+}

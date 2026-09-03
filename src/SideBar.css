@@ -60,5 +60,35 @@ hr {
   width: 100%;
 }
 
+.pagesdata{
+  display: flex;
+flex-direction: column;
+gap: 7px;
+/* background: gold; */
+margin-top: 10px;
 
 
+}
+.pagesdata .page-link{
+  border: 2px solid var(--border-light);
+ width: 150px;
+
+
+}
+.new-page-btn{
+  border: none;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+
+
+.addicon{
+ color: var(--primary);
+}
+.addicon:hover{
+  color: var(--primary-hover);
+}
