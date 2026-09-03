@@ -1,42 +1,50 @@
 import Drawer from "@mui/material/Drawer";
-import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
+
 import "./SideBar.css"
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import Switch from '@mui/material/Switch';
+
 import { useState } from "react";
 
-export default function SideBar() {
+
+export default function SideBar({open}) {
     const [light,setLight]=useState(true)
   return (
-    <Drawer
-      variant="permanent"
+    <div className="sidebar">
+      <Drawer
+      variant="persistent"
       anchor="left"
+       open={open}
       sx={{
        
         flexShrink: 0,
 
         "& .MuiDrawer-paper": {
-          width: 240,
+          width: 260,
           boxSizing: "border-box",
           backgroundColor: "var(--surface)",
-         borderRight:"2px siold var(--dark-text-secondary)",
-        overflow: "hidden",
-        },
+          overflow: "hidden",
+           top: "70px",
+          height: "calc(100vh - 80px)",
+        borderTop: "1px solid var(--dark-text-secondary)",
+  borderBottom: "1px solid var(--dark-text-secondary)",
+  borderRight: "1px solid var(--dark-text-secondary)",
+  borderRadius:"10px",
+          
+        }
       }}
     >
-      {/* Sidebar content */}
+     
       <div className="sidecontent">
       
 
         <div className="menu">
-               <div className="header">
-           <CheckBoxOutlinedIcon style={{color:"var(--primary)"}}/>
-            <h1>Taskora</h1>
-      </div>
+         
 
-     <h4> <AddCircleRoundedIcon style={{color:"var(--primary)"}}/>New Page</h4>
+     <div><h4> <AddCircleRoundedIcon style={{color:"var(--primary)"}}/>New Page</h4></div>
+
   </div>
   
  <div className="bottom">
@@ -54,5 +62,8 @@ export default function SideBar() {
       
       </div>
     </Drawer>
+    </div>
   );
 }
+
+

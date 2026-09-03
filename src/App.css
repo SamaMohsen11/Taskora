@@ -16,7 +16,8 @@
   --warning: #F59EDB;
   --danger: #EF4444;
   --warning:#E59E0B;
-
+ --danger-hover: #DC2626;
+  --primary-hover: #4A5BE0;
 
   
    
@@ -34,12 +35,60 @@
 }
 
 main{
-  display: flex;
-  justify-content: space-between;
-  /* background: red; */
-  margin-top: 50px;
+display: flex;
+flex-direction: column;
+/* background: red; */
+gap: 10px;
+
+
 }
 
 body{
   background: var(--light-background);
+}
+
+.app{
+  width: 100%;
+display: flex;
+justify-content: space-between;
+
+
+
+
+}
+.header {
+  height: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  padding-inline: 10px;
+
+  border-bottom: 1px solid var(--light-border);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+.logo{
+  width: 25%;
+  height: 100%;
+  /* background: red; */
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  /* background: gold; */
+}
+.toggle-btn{
+  border: none;
+  background: var(--primary);
+  color: white;
+  padding: 2px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  cursor: pointer;
+}
+.toggle-btn:hover{
+  background: var(--primary-hover);
 }
