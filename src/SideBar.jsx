@@ -8,29 +8,24 @@ import Switch from '@mui/material/Switch';
 import { useState } from "react";
 import {pages} from "./Contexts/PagesContext"
 import { useContext } from "react";
+import { Link,useNavigate,useLocation } from "react-router-dom";
 
+export default function SideBar({open,pageName,setPageName}) {
+  const location = useLocation();
+const currentPageId = Number(location.pathname.split("/").pop());
 
-import { Link,useNavigate } from "react-router-dom";
-
-
-
-export default function SideBar({open}) {
  const navigate= useNavigate()
  const handleNewPage = () => {
-  const newPage = {
-    id: Date.now(),
-    title: "",
-    tasks: []
-  };
+   const newPage = addNewPage();
+    setPageName("");
 
-   setPageData((prev) => [...prev, newPage]);
 
  navigate(`/page/${newPage.id}`);
 };
 
 
     const [light,setLight]=useState(true)
-    const {pageData,setPageData}=useContext(pages);
+    const {pageData,addNewPage}=useContext(pages);
     const data=pageData.map((page)=>{
     return<div   key={page.id}>
        <Link
@@ -38,7 +33,13 @@ export default function SideBar({open}) {
       to={`/page/${page.id}`}
       className="page-link"
     >
-   <h4>{page.title || "New Page"}</h4>
+
+    <h4>
+  {page.title ||
+    (page.id === currentPageId ? pageName : "") ||
+    "New Page"}
+</h4>
+
     </Link>
     </div>
     })
@@ -49,9 +50,7 @@ export default function SideBar({open}) {
       anchor="left"
        open={open}
       sx={{
-       
         flexShrink: 0,
-
         "& .MuiDrawer-paper": {
           width: 260,
           boxSizing: "border-box",
@@ -105,5 +104,7 @@ export default function SideBar({open}) {
     </div>
   );
 }
+
+
 
 

@@ -7,8 +7,10 @@ import SideBar from './SideBar';
 import MenuIcon from "@mui/icons-material/Menu";
 import {pages} from "./Contexts/PagesContext"
 
+import Home from './Home';
 
 function App() {
+  const[pageName,setPageName]=useState("")
     const [open, setOpen] =useState(true)
     
       const [pageData, setPageData] = useState(
@@ -32,11 +34,21 @@ function App() {
 ]
 
     )
+ const addNewPage = () => {
+    const newPage = {
+        id: Date.now(),
+        title: "",
+        tasks: []
+    };
 
+    setPageData(prev => [...prev, newPage]);
+
+    return newPage;
+};
 
 
   return (
-  <pages.Provider  value={{pageData,setPageData}}>
+  <pages.Provider  value={{pageData,setPageData,addNewPage}}>
       <main>
 
         <div className="header">
@@ -49,10 +61,10 @@ function App() {
       </div>
    
    <div className='app'>
-       <SideBar open={open} />
+       <SideBar open={open} pageName={pageName} setPageName={setPageName} />
         <Routes>
-      <Route path="" element={<Page />} />
-      <Route path="/page/:pageId" element={<Page />} />
+      <Route path="" element={<Home />} />
+      <Route path="/page/:pageId" element={<Page  pageName={pageName} setPageName={setPageName}/>} />
     </Routes>
    </div>
       

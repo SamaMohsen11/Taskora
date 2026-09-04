@@ -3,14 +3,15 @@ import CheckCircleOutlinedIcon from "@mui/icons-material/CheckCircleOutlined";
 import ListIcon from "@mui/icons-material/List";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import { pages } from "./Contexts/PagesContext";
-import { useContext,useState } from "react";
+import { useContext,useState ,useRef } from "react";
 import { useParams} from "react-router-dom";
 import "./Page.css"
 import TaskList from "./TaskList" 
-export default function Page() {
+export default function Page({pageName,setPageName}) {
   const [filter, setFilter] = useState("all");
   const [task,setTask]=useState("")
   const { pageId } = useParams();
+  const taskInputRef = useRef(null);
     const { pageData,setPageData } = useContext(pages);
   const currentPage = pageData.find(
     (page) => page.id === Number(pageId)
@@ -72,12 +73,56 @@ function updatePageName(value) {
         : page
     )
   );
+  setPageName("")
+}
+
+function emptyState() {
+  if (filter === "all") {
+    return (
+      <div className="empty">
+        <div className="empty-icon">
+          <ListIcon />
+        </div>
+
+        <h4>No Tasks Yet</h4>
+        <p>Add a task to get started</p>
+
+        <button className="empty-btn" onClick={()=>{taskInputRef.current.focus();addtask()}}>+ Add Task</button>
+      </div>
+    );
+  }
+
+  if (filter === "completed") {
+    return (
+      <div className="empty">
+        <div className="empty-icon" style={{background: "linear-gradient(120deg, #F1FCF7, #E5F7EE)"}} >
+          <CheckCircleOutlinedIcon style={{color:"var(--success)"}} />
+        </div>
+
+        <h4>No Completed Tasks Yet</h4>
+        <p>Complete a task to see it here</p>
+      </div>
+    );
+  }
+
+  if (filter === "uncompleted") {
+    return (
+      <div className="empty">
+        <div className="empty-icon" style={{background: "linear-gradient(120deg, #FFF9F0, #FFF0DD)"}}>
+          <AccessTimeIcon  style={{color:"var(--warning)"}}/>
+        </div>
+
+        <h4>No Uncompleted Tasks</h4>
+        <p>Great job! All your tasks are completed</p>
+      </div>
+    );
+  }
 }
   return (
     <>
       <div className="content">
         <div className="header-page">
-         {!currentPage?.title?  <input key={pageId} className="pageinput"placeholder="New Page"  onKeyDown={(e)=>{if(e.key==="Enter"){ updatePageName(e.target.value);
+         {!currentPage?.title?  <input key={pageId} value={pageName} onChange={(e)=>setPageName(e.target.value)} className="pageinput"placeholder="New Page"  onKeyDown={(e)=>{if(e.key==="Enter"){ updatePageName(e.target.value);
 }}}/>: <h1>{currentPage.title}</h1>}
           <p>stay focused and get things done</p>
         </div>
@@ -107,11 +152,15 @@ function updatePageName(value) {
         </div>
 
         <div className="tasks"> 
-       <TaskList tasks={filteredTasks}/>
+         
+{filteredTasks.length > 0
+  ? <TaskList tasks={filteredTasks} />
+  : emptyState()
+}
         </div>
         <div className="add-task">
          <div >
-          <input placeholder="Enter Your New Task here..." value={task} onChange={(e)=>setTask(e.target.value)} onKeyDown={(e) => {
+          <input   ref={taskInputRef} placeholder="Enter Your New Task here..." value={task} onChange={(e)=>setTask(e.target.value)} onKeyDown={(e) => {
   if (e.key === "Enter") {
   addtask();
   }
