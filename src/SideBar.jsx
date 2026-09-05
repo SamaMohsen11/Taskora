@@ -4,16 +4,23 @@ import "./SideBar.css"
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
-import Switch from '@mui/material/Switch';
 import { useState } from "react";
 import {pages} from "./Contexts/PagesContext"
 import { useContext } from "react";
-import { Link,useNavigate,useLocation } from "react-router-dom";
-
+import { Link,useNavigate } from "react-router-dom";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import DeletePopUp from "./DeletePopUp";
+import UpdatePopUp from "./UpdatePopUp";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 
   export default function SideBar({open,pageNames ,darkMode,setDarkMode}) {
-  const location = useLocation();
-const currentPageId = Number(location.pathname.split("/").pop());
+    const isPhone = useMediaQuery("(max-width:767px)");
+    const [deleteOpen, setDeleteOpen] = useState(false);
+const [editOpen, setEditOpen] = useState(false);
+const [selectedPage, setSelectedPage] = useState(null);
+const [updateValue, setUpdateValue] = useState("");
+const [menuOpen, setMenuOpen] = useState(null);
+
 
  const navigate= useNavigate()
  const handleNewPage = () => {
@@ -22,49 +29,129 @@ const currentPageId = Number(location.pathname.split("/").pop());
 };
 
 
-    const [light,setLight]=useState(true)
-    const {pageData,addNewPage}=useContext(pages);
-    const data=pageData.map((page)=>{
-    return<div   key={page.id}>
-       <Link
-    
-      to={`/page/${page.id}`}
-      className="page-link"
-    >
+  
+    const {pageData,addNewPage,deletePage,updatePageTitle} = useContext(pages);
+const data = pageData.map((page) => {
+  return (
+    <div className="page-item" key={page.id}>
 
-<h4>
-  {page.title ||
-    pageNames[page.id] ||
-    "New Page"}
-</h4>
+      <Link
+        to={`/page/${page.id}`}
+        className="page-link"
+      >
+        <h4>
+          {page.title ||
+            pageNames[page.id] ||
+            "New Page"}
+        </h4>
+      </Link>
 
-    </Link>
+      <div className="page-menu">
+
+        <button
+          className="page-menu-btn"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+
+            setMenuOpen(
+              menuOpen === page.id ? null : page.id
+            );
+          }}
+        >
+          <MoreVertIcon />
+        </button>
+
+        {menuOpen === page.id && (
+          <div className="page-dropdown">
+
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+
+                setSelectedPage(page);
+                setUpdateValue(page.title || "");
+                setEditOpen(true);
+                setMenuOpen(null);
+              }}
+            >
+              Edit
+            </button>
+
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+
+                setSelectedPage(page);
+                setDeleteOpen(true);
+                setMenuOpen(null);
+              }}
+            >
+              Delete
+            </button>
+
+          </div>
+        )}
+
+      </div>
+
     </div>
-    })
+  );
+});
   return (
     <div className="sidebar">
-      <Drawer
-      variant="persistent"
-      anchor="left"
-       open={open}
-      sx={{
-        flexShrink: 0,
-        "& .MuiDrawer-paper": {
-          width: 260,
-          boxSizing: "border-box",
-          backgroundColor: "var(--surface)",
-          overflow: "hidden",
-           top: "70px",
-          height: "calc(100vh - 80px)",
-        borderTop: "1px solid var(--light-border)",
-  borderBottom: "1px solid var(--light-border)",
-  borderRight: "1px solid var(--light-border)",
-  borderRadius:"10px",
-   boxShadow: "0 2px 5px rgba(0, 0, 0, 0.08)",
-          
-        }
-      }}
-    >
+<Drawer
+  variant="persistent"
+  anchor={isPhone ? "top" : "left"}
+  open={open}
+  hideBackdrop
+  ModalProps={{
+    disableEnforceFocus: true,
+  }}
+  sx={{
+    "& .MuiDrawer-paper": {
+      width: isPhone ? "100%" : 260,
+      height: isPhone ? "300px" : "calc(100vh - 90px)",
+      top: isPhone?"60px":"80px",
+      left: isPhone ? 0 : "auto",
+      boxSizing: "border-box",
+      backgroundColor: "var(--surface)",
+      overflow: "hidden",
+
+      borderTop: "1px solid var(--light-border)",
+      borderBottom: "1px solid var(--light-border)",
+      borderRight: "1px solid var(--light-border)",
+      borderRadius: "10px",
+      boxShadow: "0 2px 5px rgba(0, 0, 0, 0.08)",
+    },
+  }}
+>
+  {deleteOpen && selectedPage && (
+  <DeletePopUp
+    setOpen={setDeleteOpen}
+    type="Page"
+    deleteTask={() => {
+      deletePage(selectedPage.id);
+    }}
+  />
+)}
+{editOpen && selectedPage && (
+  <UpdatePopUp
+    setOpen={setEditOpen}
+    tasktitle={selectedPage.title}
+    updateValue={updateValue}
+    setUpdateValue={setUpdateValue}
+    type="Page"
+    UpdatePopUp={() => {
+      const title = updateValue.trim();
+
+      if (title !== "") {
+        updatePageTitle(selectedPage.id, title);
+        setEditOpen(false);
+      }
+    }}
+  />
+)}
      
       <div className="sidecontent">
       

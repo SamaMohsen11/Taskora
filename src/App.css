@@ -98,6 +98,7 @@ body{
   align-items: center;
   gap: 5px;
   padding-inline: 10px;
+  padding: 20px;
 
   border-bottom: 1px solid var(--border);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
@@ -143,4 +144,43 @@ a{
 
 a:hover{
   color: var(--primary-hover);
+}
+
+
+/* =========================
+   Tablet
+========================= */
+
+@media (max-width: 1024px) {
+
+  .header {
+    padding: 15px;
+  }
+
+  .logo {
+    width: 30%;
+  }
+
+}
+
+
+/* =========================
+   Phone
+========================= */
+
+@media (max-width: 767px) {
+
+  .header {
+    height: 60px;
+    padding: 10px 15px;
+  }
+
+  .logo {
+    width: auto;
+  }
+
+  .toggle-btn {
+    padding: 3px;
+  }
+
 }

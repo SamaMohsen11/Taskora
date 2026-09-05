@@ -186,7 +186,7 @@ function emptyState() {
   addtask();
   }
 }}/>
-          <button onClick={addtask}> Add</button>
+          <button onClick={()=>{task.trim()!==""?addtask():taskInputRef.current.focus();}}> Add</button>
          </div>
         </div>
       </div>

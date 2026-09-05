@@ -1,5 +1,5 @@
 .content{
-    width: 80%;
+    width: 85%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -11,6 +11,7 @@
     align-items: flex-start;
     width: 250px;
     height: 60px;
+   
 }
 .header-page p{
     color: var(--text-secondary);
@@ -44,7 +45,7 @@
     justify-content: center;
     align-items: center;
     border-radius: 20px;
-    color: var(--text-primary);
+    color: white;
 }
 .icon.list{ 
     background: var(--primary); 
@@ -244,4 +245,128 @@
 .empty-btn:hover {
   opacity: 0.9;
   transform: translateY(-1px);
+}
+
+
+/* =========================
+   Tablet
+========================= */
+
+@media (max-width: 1024px) {
+
+  .content {
+    width: 90%;
+    margin: auto;
+  }
+
+  .content .cards {
+    height: auto;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .cards > div {
+    width: 280px;
+    height: 150px;
+  }
+
+  .add-task {
+    width: 90%;
+  }
+
+  .add-task div {
+    width: 90%;
+  }
+
+  .add-task div input {
+    width: 100%;
+  }
+
+  .task-content {
+    width: 90%;
+  }
+
+}
+
+
+/* =========================
+   Phone
+========================= */
+
+@media (max-width: 767px) {
+
+  .content {
+    width: 100%;
+    gap: 20px;
+    box-sizing: border-box;
+    padding: 0 15px;
+  }
+
+  .content .header-page {
+    width: 100%;
+  }
+
+  .pageinput {
+    max-width: 100%;
+    font-size: 26px;
+  }
+
+  .pageinput::placeholder {
+    font-size: 26px;
+  }
+
+  .content .cards {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 10px;
+  }
+
+  .cards > div {
+    width: 100%;
+    height: 120px;
+  }
+
+  .btns {
+    width: 100%;
+    height: auto;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .btns button {
+    width: 120px;
+  }
+
+  .add-task {
+    width: 100%;
+    height: auto;
+  }
+
+  .add-task div {
+    width: 100%;
+    height: auto;
+    padding: 15px 10px;
+    flex-direction: column;
+    gap: 10px;
+    box-sizing: border-box;
+  }
+
+  .add-task div input {
+    width: 100%;
+    height: 45px;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .add-task div button {
+    width: 100%;
+  }
+
+  .empty {
+    min-height: 250px;
+    padding: 20px 10px;
+  }
+
 }

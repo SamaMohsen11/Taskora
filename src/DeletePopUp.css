@@ -100,3 +100,28 @@ z-index: 1000000;
     align-items: center; 
     justify-content: center; 
 }
+
+@media (max-width: 767px) {
+
+  .delete-popup-content {
+    width: calc(100% - 30px);
+    max-width: 450px;
+    height: auto;
+    min-height: 280px;
+    padding: 20px 15px;
+  }
+
+  .delete-popup-content div:nth-child(1) {
+    width: 95%;
+  }
+
+  .delete-btns {
+    width: 95%;
+    gap: 10px;
+  }
+
+  .delete-btns button {
+    width: 120px;
+  }
+
+}

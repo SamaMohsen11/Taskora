@@ -61,3 +61,38 @@
 .left.check{
     text-decoration: line-through;
 }
+
+@media (max-width: 1024px) {
+
+  .task-content {
+    width: 90%;
+  }
+
+  .right {
+    width: 25%;
+  }
+
+}
+
+
+@media (max-width: 767px) {
+
+  .task-content {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px 10px;
+    min-height: 50px;
+  }
+
+  .left {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .right {
+    width: auto;
+    flex-shrink: 0;
+    gap: 8px;
+  }
+
+}

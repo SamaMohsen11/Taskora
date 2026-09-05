@@ -99,3 +99,37 @@ z-index: 1000000;
     border-color: #374151; 
   /* outline: none; */ 
 /* }  */ 
+
+@media (max-width: 767px) {
+
+  .popup-content {
+    width: calc(100% - 30px);
+    max-width: 400px;
+    height: auto;
+    min-height: 300px;
+    padding: 20px 15px;
+    box-sizing: border-box;
+  }
+
+  .popup-content div:nth-child(1) {
+    width: 95%;
+  }
+
+  .div-btns {
+    width: 95%;
+    gap: 10px;
+  }
+
+  .div-btns button {
+    width: 120px;
+  }
+
+  .inputs {
+    width: 90%;
+  }
+
+  .inputs input {
+    box-sizing: border-box;
+  }
+
+}
