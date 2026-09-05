@@ -12,11 +12,11 @@ setOpen(false)
 return (
     <>
     <div className="popup">
-        <div className="popup-content">
-            <div ><h3>Delete Task</h3> <button onClick={handlecancel}><ClearIcon /></button> </div>
+        <div className="delete-popup-content">
+            <div ><h2>Delete Task</h2> <button onClick={handlecancel}><ClearIcon /></button> </div>
        <div className="delete-icon"><DeleteIcon style={{color:"red"}} /></div>
        <h3>Are You Sure you want to delete this task</h3>
-       <div className="div-btns">
+       <div className="delete-btns">
         <button onClick={handlecancel}>Cancel</button>
         <button onClick={handeledelete} >yes, Delete</button>
        </div>

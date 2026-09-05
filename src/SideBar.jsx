@@ -10,16 +10,14 @@ import {pages} from "./Contexts/PagesContext"
 import { useContext } from "react";
 import { Link,useNavigate,useLocation } from "react-router-dom";
 
-export default function SideBar({open,pageName,setPageName}) {
+
+  export default function SideBar({open,pageNames ,darkMode,setDarkMode}) {
   const location = useLocation();
 const currentPageId = Number(location.pathname.split("/").pop());
 
  const navigate= useNavigate()
  const handleNewPage = () => {
    const newPage = addNewPage();
-    setPageName("");
-
-
  navigate(`/page/${newPage.id}`);
 };
 
@@ -34,9 +32,9 @@ const currentPageId = Number(location.pathname.split("/").pop());
       className="page-link"
     >
 
-    <h4>
+<h4>
   {page.title ||
-    (page.id === currentPageId ? pageName : "") ||
+    pageNames[page.id] ||
     "New Page"}
 </h4>
 
@@ -90,12 +88,10 @@ const currentPageId = Number(location.pathname.split("/").pop());
   <hr />
 
   <div className="mode">
-    {light ? <LightModeIcon /> : <DarkModeIcon />}
 
-    <Switch
-      onChange={() => setLight(!light)}
-      style={{ color: "var(--primary)" }}
-    />
+    {darkMode ? <DarkModeIcon  onClick={() => setDarkMode(!darkMode)} className="dark" /> : <LightModeIcon  className="light"  onClick={() => setDarkMode(!darkMode)} />}
+
+  
   </div>
 </div>
       

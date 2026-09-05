@@ -52,7 +52,7 @@ export default function Task({task}){
     
     return(
         <>
-          <div>{delopen&&<DeletePopUp deleteTask={deleteTask} setOpen={setDelOpen}/>} </div>
+          {delopen&&<DeletePopUp deleteTask={deleteTask} setOpen={setDelOpen}/>} 
           <div>{updopen&&< UpdatePopUp UpdatePopUp={updatetask} setOpen={setUpdOpen} tasktitle={task.title}  updateValue={updateValue} setUpdateValue={setUpdateValue}/>} </div>
         <div className="task-content">
 

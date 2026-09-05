@@ -10,7 +10,8 @@ import {pages} from "./Contexts/PagesContext"
 import Home from './Home';
 
 function App() {
-  const[pageName,setPageName]=useState("")
+const [darkMode, setDarkMode] = useState(false);
+  const [pageNames, setPageNames] = useState({});
     const [open, setOpen] =useState(true)
     
       const [pageData, setPageData] = useState(
@@ -49,7 +50,7 @@ function App() {
 
   return (
   <pages.Provider  value={{pageData,setPageData,addNewPage}}>
-      <main>
+    <main className={darkMode ? "dark" : ""}>
 
         <div className="header">
            <div className='logo'>
@@ -61,10 +62,10 @@ function App() {
       </div>
    
    <div className='app'>
-       <SideBar open={open} pageName={pageName} setPageName={setPageName} />
+       <SideBar open={open}   pageNames={pageNames}  darkMode={darkMode} setDarkMode={setDarkMode} />
         <Routes>
       <Route path="" element={<Home />} />
-      <Route path="/page/:pageId" element={<Page  pageName={pageName} setPageName={setPageName}/>} />
+      <Route path="/page/:pageId" element={<Page  pageNames={pageNames} setPageNames={setPageNames}/>} />
     </Routes>
    </div>
       

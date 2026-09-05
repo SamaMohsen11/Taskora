@@ -13,16 +13,25 @@
   --light-border: #E5E7EB;
 
   --success: #22C55E;
-  --warning: #F59EDB;
+  --warning: #E59E0B;
   --danger: #EF4444;
-  --warning:#E59E0B;
- --danger-hover: #DC2626;
+  --danger-hover: #DC2626;
   --primary-hover: #4A5BE0;
 
-  
-   
-      
-/* Dark Mode*/
+
+  /* Current Theme - Light */
+
+  --background: var(--light-background);
+  --surface: var(--light-surface);
+
+  --text-primary: var(--light-text-primary);
+  --text-secondary: var(--light-text-secondary);
+
+  --border: var(--light-border);
+
+
+  /* Dark Mode */
+
   --dark-background: #0F1115;
   --dark-surface: #1A1F2B;
 
@@ -34,30 +43,55 @@
   --dark-border: #283038;
 }
 
-main{
-display: flex;
-flex-direction: column;
-/* background: red; */
-gap: 10px;
+.dark {
+  --background: var(--dark-background);
+  --surface: var(--dark-surface);
 
+  --text-primary: var(--dark-text-primary);
+  --text-secondary: var(--dark-text-secondary);
 
+  --border: var(--dark-border);
+
+  --primary-light: var(--dark-primary-light);
+
+  color: var(--text-primary);
 }
+
+
+/* main{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--background);
+  color: var(--text-primary);
+} */
+ main{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--background);
+  color: var(--text-primary);
+}
+
 
 body{
-  background: var(--light-background);
+  background: var(--background);
+  color: var(--text-primary);
 }
+
 
 .app{
   width: 100%;
-display: flex;
-justify-content: space-between;
-
-
-
-
+  display: flex;
+  justify-content: space-between;
+  background: var(--background);
+  color: var(--text-primary);
 }
+
+
 .header {
-  height: 60px;
+  height: 65px;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -65,18 +99,22 @@ justify-content: space-between;
   gap: 5px;
   padding-inline: 10px;
 
-  border-bottom: 1px solid var(--light-border);
+  border-bottom: 1px solid var(--border);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+
+  background: var(--background);
+  color: var(--text-primary);
 }
+
+
 .logo{
   width: 25%;
   height: 100%;
-  /* background: red; */
   display: flex;
-  /* justify-content: center; */
   align-items: center;
-  /* background: gold; */
 }
+
+
 .toggle-btn{
   border: none;
   background: var(--primary);
@@ -89,6 +127,8 @@ justify-content: space-between;
   -o-border-radius: 4px;
   cursor: pointer;
 }
+
+
 .toggle-btn:hover{
   background: var(--primary-hover);
 }
@@ -96,9 +136,11 @@ justify-content: space-between;
 
 a{
   text-decoration: none;
-color: var(--primary);
-cursor: pointer;
+  color: var(--primary);
+  cursor: pointer;
 }
+
+
 a:hover{
   color: var(--primary-hover);
 }

@@ -3,14 +3,16 @@ import CheckCircleOutlinedIcon from "@mui/icons-material/CheckCircleOutlined";
 import ListIcon from "@mui/icons-material/List";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import { pages } from "./Contexts/PagesContext";
-import { useContext,useState ,useRef } from "react";
+import { useContext,useState ,useRef  } from "react";
 import { useParams} from "react-router-dom";
 import "./Page.css"
 import TaskList from "./TaskList" 
-export default function Page({pageName,setPageName}) {
+
+export default function Page({pageNames,setPageNames}) {
   const [filter, setFilter] = useState("all");
   const [task,setTask]=useState("")
   const { pageId } = useParams();
+  const pageName = pageNames[pageId] || "";
   const taskInputRef = useRef(null);
     const { pageData,setPageData } = useContext(pages);
   const currentPage = pageData.find(
@@ -62,7 +64,6 @@ function addtask() {
 
   setTask("");
 }
-
 function updatePageName(value) {
   if (!value.trim()) return;
 
@@ -73,7 +74,11 @@ function updatePageName(value) {
         : page
     )
   );
-  setPageName("")
+
+  setPageNames(prev => ({
+    ...prev,
+    [pageId]: ""
+  }));
 }
 
 function emptyState() {
@@ -87,7 +92,7 @@ function emptyState() {
         <h4>No Tasks Yet</h4>
         <p>Add a task to get started</p>
 
-        <button className="empty-btn" onClick={()=>{taskInputRef.current.focus();addtask()}}>+ Add Task</button>
+        <button className="empty-btn" onClick={()=>{task.trim()!==""?addtask():taskInputRef.current.focus();}}>+ Add Task</button>
       </div>
     );
   }
@@ -122,8 +127,24 @@ function emptyState() {
     <>
       <div className="content">
         <div className="header-page">
-         {!currentPage?.title?  <input key={pageId} value={pageName} onChange={(e)=>setPageName(e.target.value)} className="pageinput"placeholder="New Page"  onKeyDown={(e)=>{if(e.key==="Enter"){ updatePageName(e.target.value);
-}}}/>: <h1>{currentPage.title}</h1>}
+         {!currentPage?.title?  <input
+  key={pageId}
+  id="pagename"
+  value={pageName}
+  onChange={(e) =>
+    setPageNames(prev => ({
+      ...prev,
+      [pageId]: e.target.value
+    }))
+  }
+  className="pageinput"
+  placeholder="New Page"
+  onKeyDown={(e) => {
+    if (e.key === "Enter") {
+      updatePageName(e.target.value);
+    }
+  }}
+/>: <h1>{currentPage.title}</h1>}
           <p>stay focused and get things done</p>
         </div>
 
