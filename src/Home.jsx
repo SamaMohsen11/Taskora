@@ -8,7 +8,7 @@ import DoneAllIcon from '@mui/icons-material/DoneAll';
 
 export default function Home(){
 
-    const { addNewPage } = useContext(pages);
+    const { addNewPage,darkMode } = useContext(pages);
     const navigate = useNavigate();
 
     const handleNewPage = () => {
@@ -23,7 +23,7 @@ export default function Home(){
 
     <div className="hero">
         <div className="image">
-            <img src="./image.png" />
+            <img src={darkMode?"/image-dark.png":"/image-light.png"}/>
         </div>
 
         <div className="info">

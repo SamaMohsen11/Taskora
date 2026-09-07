@@ -6,8 +6,10 @@ import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
 import SideBar from './SideBar';
 import MenuIcon from "@mui/icons-material/Menu";
 import {pages} from "./Contexts/PagesContext"
-
+import LightModeIcon from '@mui/icons-material/LightMode';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
 import Home from './Home';
+import NotFound from './NotFound';
 
 function App() {
 const [darkMode, setDarkMode] = useState(false);
@@ -42,6 +44,7 @@ const navigate=useNavigate();
 useEffect(() => {
   localStorage.setItem("pageData", JSON.stringify(pageData));
 }, [pageData]);
+
  const addNewPage = () => {
     const newPage = {
         id: Date.now(),
@@ -53,6 +56,7 @@ useEffect(() => {
 
     return newPage;
 };
+
 const deletePage = (pageId) => {
   setPageData(prev =>
     prev.filter(page => page.id !== pageId)
@@ -72,7 +76,7 @@ const updatePageTitle = (pageId, newTitle) => {
 
 
   return (
-  <pages.Provider  value={{pageData,setPageData,addNewPage,deletePage,updatePageTitle}}>
+  <pages.Provider  value={{pageData,setPageData,addNewPage,deletePage,updatePageTitle,darkMode}}>
     <main className={darkMode ? "dark" : ""}>
 
         <div className="header">
@@ -80,8 +84,11 @@ const updatePageTitle = (pageId, newTitle) => {
             <CheckBoxOutlinedIcon style={{color:"var(--primary)" }}/>
            <Link to=""> <h1>Taskora</h1></Link>
            </div>
-            <button className="toggle-btn"   onClick={() => setOpen(prev => !prev)} > <MenuIcon className='side-icon'/> </button>
-       
+            <div >
+             
+         {darkMode ? <DarkModeIcon  onClick={() => setDarkMode(!darkMode)} className="dark" /> : <LightModeIcon  className="light"  onClick={() => setDarkMode(!darkMode)} />}
+ <button className="toggle-btn"   onClick={() => setOpen(prev => !prev)} > <MenuIcon className='side-icon'/> </button>
+            </div>
       </div>
    
    <div className='app'>
@@ -89,6 +96,7 @@ const updatePageTitle = (pageId, newTitle) => {
         <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/page/:pageId" element={<Page  pageNames={pageNames} setPageNames={setPageNames}/>} />
+      <Route path='*' element={<NotFound/>}></Route>
     </Routes>
    </div>
       

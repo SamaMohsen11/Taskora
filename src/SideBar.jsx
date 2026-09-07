@@ -1,9 +1,6 @@
 import Drawer from "@mui/material/Drawer";
-
 import "./SideBar.css"
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
-import LightModeIcon from '@mui/icons-material/LightMode';
-import DarkModeIcon from '@mui/icons-material/DarkMode';
 import { useState } from "react";
 import {pages} from "./Contexts/PagesContext"
 import { useContext } from "react";
@@ -13,9 +10,9 @@ import DeletePopUp from "./DeletePopUp";
 import UpdatePopUp from "./UpdatePopUp";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
-  export default function SideBar({open,pageNames ,darkMode,setDarkMode}) {
-    const isPhone = useMediaQuery("(max-width:767px)");
-    const [deleteOpen, setDeleteOpen] = useState(false);
+  export default function SideBar({open,pageNames }) {
+  const isPhone = useMediaQuery("(max-width:767px)");
+  const [deleteOpen, setDeleteOpen] = useState(false);
 const [editOpen, setEditOpen] = useState(false);
 const [selectedPage, setSelectedPage] = useState(null);
 const [updateValue, setUpdateValue] = useState("");
@@ -30,7 +27,7 @@ const [menuOpen, setMenuOpen] = useState(null);
 
 
   
-    const {pageData,addNewPage,deletePage,updatePageTitle} = useContext(pages);
+const {pageData,addNewPage,deletePage,updatePageTitle} = useContext(pages);
 const data = pageData.map((page) => {
   return (
     <div className="page-item" key={page.id}>
@@ -162,26 +159,12 @@ const data = pageData.map((page) => {
      <div>
 <button className="new-page-btn" onClick={handleNewPage}>
   <AddCircleRoundedIcon className="addicon"  /><h2>New Page</h2></button>
- 
-
       <div className="pagesdata">
         {data}
       </div>
      </div>
 
-  </div>
-  
- <div className="bottom">
-  <hr />
-
-  <div className="mode">
-
-    {darkMode ? <DarkModeIcon  onClick={() => setDarkMode(!darkMode)} className="dark" /> : <LightModeIcon  className="light"  onClick={() => setDarkMode(!darkMode)} />}
-
-  
-  </div>
-</div>
-      
+  </div>      
       </div>
     </Drawer>
     </div>

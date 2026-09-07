@@ -6,6 +6,8 @@
 
   --primary: #5B6DF6;
   --primary-light: #EEF2FF;
+    --success-light: #ECFDF5;
+  --warning-light: #FFFBEB;
 
   --light-text-primary: #111827;
   --light-text-secondary: #687280;
@@ -36,11 +38,14 @@
   --dark-surface: #1A1F2B;
 
   --dark-primary-light: #26283A;
+  --dark-success-light: #26283A;
+  --dark-warning-light: #26283A;
 
   --dark-text-primary: #E5E7EB;
   --dark-text-secondary: #9CA3AF;
 
   --dark-border: #283038;
+
 }
 
 .dark {
@@ -53,8 +58,11 @@
   --border: var(--dark-border);
 
   --primary-light: var(--dark-primary-light);
+  --success-light: var(--dark-primary-light);
+  --warning-light: var(--dark-primary-light);
 
   color: var(--text-primary);
+
 }
 
 
@@ -107,12 +115,22 @@ body{
   color: var(--text-primary);
 }
 
+.header div:nth-child(2){
+  width: 10%;
+  height: 100%;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+
+}
 
 .logo{
   width: 25%;
   height: 100%;
   display: flex;
   align-items: center;
+
 }
 
 

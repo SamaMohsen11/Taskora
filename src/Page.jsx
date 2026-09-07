@@ -7,20 +7,26 @@ import { useContext,useState ,useRef  } from "react";
 import { useParams} from "react-router-dom";
 import "./Page.css"
 import TaskList from "./TaskList" 
+import NotFound from "./NotFound";
 
 export default function Page({pageNames,setPageNames}) {
+  const { pageData,setPageData } = useContext(pages);
   const [filter, setFilter] = useState("all");
   const [task,setTask]=useState("")
   const { pageId } = useParams();
   const pageName = pageNames[pageId] || "";
   const taskInputRef = useRef(null);
-    const { pageData,setPageData } = useContext(pages);
+ 
+ // current page 
   const currentPage = pageData.find(
     (page) => page.id === Number(pageId)
   );
+  if (!currentPage) {
+return <NotFound/>
+}
+const tasks = currentPage?.tasks || [];
 
-  const tasks = currentPage?.tasks || [];
-
+// (dynamic cards numbers)
 const allTasks = tasks.length;
 
 const completedTasks = tasks.filter(
@@ -31,6 +37,7 @@ const unCompletedTasks = tasks.filter(
   (task) => !task.completed
 ).length;
 
+//filtred data (filtered buttons)
 const filteredTasks = tasks.filter((task) => {
   if (filter === "completed") {
     return task.completed;
@@ -40,8 +47,10 @@ const filteredTasks = tasks.filter((task) => {
     return !task.completed;
   }
 
-  return true;
+  return true; // all
 });
+
+// add task
 function addtask() {
   if (!task.trim()) return;
 
@@ -64,6 +73,7 @@ function addtask() {
 
   setTask("");
 }
+
 function updatePageName(value) {
   if (!value.trim()) return;
 
@@ -80,7 +90,7 @@ function updatePageName(value) {
     [pageId]: ""
   }));
 }
-
+//empty satate (filtered buttons)
 function emptyState() {
   if (filter === "all") {
     return (
@@ -123,12 +133,13 @@ function emptyState() {
     );
   }
 }
+
   return (
     <>
       <div className="content">
         <div className="header-page">
          {!currentPage?.title?  <input
-  key={pageId}
+     key={pageId}
   id="pagename"
   value={pageName}
   onChange={(e) =>
