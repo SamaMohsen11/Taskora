@@ -80,7 +80,7 @@ const updatePageTitle = (pageId, newTitle) => {
         <Routes>
       <Route path="/" element={<Home darkMode={darkMode}/>} />
       <Route path="/page/:pageId" element={<Page  pageNames={pageNames} setPageNames={setPageNames}/>} />
-      <Route path='*' element={<NotFound darkMode={darkMode}/>}></Route>
+      <Route path='*' element={<NotFound/>}></Route>
     </Routes>
    </div>
       
