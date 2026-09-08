@@ -9,7 +9,7 @@
   gap: 80px;
 }
 
-/* Image + Info */
+
 .hero {
   width: 100%;
 
@@ -21,7 +21,7 @@
   margin-top: 100px;
 }
 
-/* Image */
+
 .hero .image {
   width: 300px;
   height: 300px;
@@ -38,7 +38,7 @@
   object-fit: contain;
 }
 
-/* Info */
+
 .cont .info {
   width: 500px;
   height: 300px;
@@ -51,7 +51,7 @@
   gap: 15px;
 }
 
-/* Heading */
+
 .info h1 {
   margin: 0;
 
@@ -60,7 +60,7 @@
   font-weight: 700;
 }
 
-/* Paragraph */
+
 .info p {
   margin: 0;
 
@@ -68,7 +68,7 @@
   line-height: 1.5;
 }
 
-/* Button */
+
 .info button {
   width: 180px;
   height: 42px;
@@ -90,7 +90,6 @@
   background: var(--primary-hover);
 }
 
-/* Steps */
 .steps {
   width: 70%;
 
@@ -105,7 +104,7 @@
   border-top: 1px dashed var(--light-border);
 }
 
-/* Single Step */
+
 .step {
   flex: 1;
 
@@ -116,7 +115,7 @@
   gap: 15px;
 }
 
-/* Step Icon */
+
 .step-icon {
   width: 48px;
   height: 48px;
@@ -130,30 +129,28 @@
   border-radius: 12px;
 }
 
-/* Icon Size */
+
 .step-icon svg {
   font-size: 25px;
 }
 
-/* Create Page Icon */
 .page-icon {
   background: #f0ebff;
   color: #6c3df4;
 }
 
-/* Add Tasks Icon */
+
 .task-icon {
   background: #e6f9f0;
   color: #20b878;
 }
 
-/* Complete Tasks Icon */
+
 .complete-icon {
   background: #fff3df;
   color: #f5a623;
 }
 
-/* Step Heading */
 .step h3 {
   margin: 0 0 5px;
 
@@ -163,7 +160,7 @@
   color: var(--text-primary);
 }
 
-/* Step Description */
+
 .step p {
   margin: 0;
 
@@ -174,9 +171,6 @@
 }
 
 
-/* =========================
-   Responsive
-========================= */
 
 @media (max-width: 1024px) {
 
@@ -227,7 +221,6 @@
     box-sizing: border-box;
   }
 
-  /* Image + Info */
   .hero {
     width: 100%;
     flex-direction: column;
@@ -236,13 +229,13 @@
     text-align: center;
   }
 
-  /* Image */
+ 
   .hero .image {
     width: 220px;
     height: 220px;
   }
 
-  /* Info */
+
   .cont .info {
     width: 100%;
     height: auto;
@@ -250,26 +243,26 @@
     gap: 12px;
   }
 
-  /* Heading */
+
   .info h1 {
     font-size: 26px;
   }
 
-  /* Paragraph */
+ 
   .info p {
     width: 90%;
     font-size: 14px;
     line-height: 1.6;
   }
 
-  /* Button */
+  
   .info button {
     width: 180px;
     height: 42px;
     margin-top: 8px;
   }
 
-  /* Steps */
+
   .steps {
     width: 100%;
     flex-direction: column;
@@ -278,14 +271,14 @@
     padding-top: 25px;
   }
 
-  /* Single Step */
+ 
   .step {
     width: 100%;
     justify-content: flex-start;
     gap: 15px;
   }
 
-  /* Step Icon */
+
   .step-icon {
     width: 45px;
     height: 45px;
@@ -295,12 +288,12 @@
     font-size: 23px;
   }
 
-  /* Step Heading */
+
   .step h3 {
     font-size: 15px;
   }
 
-  /* Step Description */
+ 
   .step p {
     font-size: 12px;
   }

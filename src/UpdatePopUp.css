@@ -76,7 +76,6 @@ z-index: 1000000;
 } 
 .inputs{ 
     width: 80%; 
-    /* background: red; */ 
     display: flex; 
     flex-direction: column; 
     gap: 2px; 
@@ -95,10 +94,7 @@ z-index: 1000000;
     color: var(--text-primary);
 } 
  
-/* .inputs input:focus { 
-    border-color: #374151; 
-  /* outline: none; */ 
-/* }  */ 
+ 
 
 @media (max-width: 767px) {
 

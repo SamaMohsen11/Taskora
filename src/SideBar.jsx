@@ -17,7 +17,7 @@ const [editOpen, setEditOpen] = useState(false);
 const [selectedPage, setSelectedPage] = useState(null);
 const [updateValue, setUpdateValue] = useState("");
 const [menuOpen, setMenuOpen] = useState(null);
-
+const {pageData,addNewPage,deletePage,updatePageTitle} = useContext(pages);
 
  const navigate= useNavigate()
  const handleNewPage = () => {
@@ -25,22 +25,13 @@ const [menuOpen, setMenuOpen] = useState(null);
  navigate(`/page/${newPage.id}`);
 };
 
-
-  
-const {pageData,addNewPage,deletePage,updatePageTitle} = useContext(pages);
 const data = pageData.map((page) => {
   return (
     <div className="page-item" key={page.id}>
 
-      <Link
-        to={`/page/${page.id}`}
-        className="page-link"
-      >
+      <Link to={`/page/${page.id}`}className="page-link">
         <h4>
-          {page.title ||
-            pageNames[page.id] ||
-            "New Page"}
-        </h4>
+          {page.title || pageNames[page.id] || "New Page"}</h4>
       </Link>
 
       <div className="page-menu">
@@ -65,9 +56,8 @@ const data = pageData.map((page) => {
             <button
               onClick={(e) => {
                 e.preventDefault();
-
                 setSelectedPage(page);
-                setUpdateValue(page.title || "");
+                setUpdateValue(page.title || pageNames[page.id] || "New Page");
                 setEditOpen(true);
                 setMenuOpen(null);
               }}
@@ -78,7 +68,6 @@ const data = pageData.map((page) => {
             <button
               onClick={(e) => {
                 e.preventDefault();
-
                 setSelectedPage(page);
                 setDeleteOpen(true);
                 setMenuOpen(null);
@@ -135,13 +124,11 @@ const data = pageData.map((page) => {
 {editOpen && selectedPage && (
   <UpdatePopUp
     setOpen={setEditOpen}
-    tasktitle={selectedPage.title}
     updateValue={updateValue}
     setUpdateValue={setUpdateValue}
     type="Page"
     UpdatePopUp={() => {
       const title = updateValue.trim();
-
       if (title !== "") {
         updatePageTitle(selectedPage.id, title);
         setEditOpen(false);

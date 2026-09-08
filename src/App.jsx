@@ -18,28 +18,12 @@ const [darkMode, setDarkMode] = useState(false);
     
    
 const navigate=useNavigate();
-    const [pageData, setPageData] = useState(() => {
+  const [pageData, setPageData] = useState(() => {
   const savedPages = localStorage.getItem("pageData");
 
   return savedPages
     ? JSON.parse(savedPages)
-    : [
-        {
-          id: 1,
-          title: "Today",
-          tasks: [
-            { id: 1, title: "Study React", completed: true },
-            { id: 2, title: "Build Taskora", completed: false }
-          ]
-        },
-        {
-          id: 2,
-          title: "Work",
-          tasks: [
-            { id: 3, title: "Finish project", completed: false }
-          ]
-        }
-      ];
+    : [];
 });
 useEffect(() => {
   localStorage.setItem("pageData", JSON.stringify(pageData));
@@ -76,7 +60,7 @@ const updatePageTitle = (pageId, newTitle) => {
 
 
   return (
-  <pages.Provider  value={{pageData,setPageData,addNewPage,deletePage,updatePageTitle,darkMode}}>
+  <pages.Provider  value={{pageData,setPageData,addNewPage,deletePage,updatePageTitle}}>
     <main className={darkMode ? "dark" : ""}>
 
         <div className="header">
@@ -94,9 +78,9 @@ const updatePageTitle = (pageId, newTitle) => {
    <div className='app'>
        <SideBar open={open}   pageNames={pageNames}  darkMode={darkMode} setDarkMode={setDarkMode} />
         <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<Home darkMode={darkMode}/>} />
       <Route path="/page/:pageId" element={<Page  pageNames={pageNames} setPageNames={setPageNames}/>} />
-      <Route path='*' element={<NotFound/>}></Route>
+      <Route path='*' element={<NotFound darkMode={darkMode}/>}></Route>
     </Routes>
    </div>
       

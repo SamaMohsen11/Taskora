@@ -1,12 +1,12 @@
 import "./UpdatePopUp.css"
 import ClearIcon from '@mui/icons-material/Clear';
-export default function UpdatePopUp({UpdatePopUp,setOpen,tasktitle,updateValue,setUpdateValue, type = "Task"}){
+export default function UpdatePopUp({UpdatePopUp,setOpen,updateValue,setUpdateValue, type = "Task"}){
 
    
-     function handlecancel(){
+  function handlecancel(){
         setOpen(false)
      }
-     function handleupdate(){
+  function handleupdate(){
 UpdatePopUp();
      }
     return(
@@ -17,7 +17,7 @@ UpdatePopUp();
 
        <div className="inputs">
 <label htmlFor="task">Tilte</label>
-<input id="task" placeholder={tasktitle} value={updateValue} onChange={(e)=>setUpdateValue(e.target.value)}  onKeyDown={(e) => {
+<input id="task" placeholder="Enter Title" value={updateValue} onChange={(e)=>setUpdateValue(e.target.value)}  onKeyDown={(e) => {
   if (e.key === "Enter") {
     handleupdate();
   }}}/>
@@ -26,7 +26,7 @@ UpdatePopUp();
 
        <div className="div-btns">
         <button onClick={handlecancel}>Cancel</button>
-        <button onClick={handleupdate} >Update</button>
+        <button onClick={()=>{handleupdate()}} >Update</button>
        </div>
         </div>
     </div>

@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom"
 import "./NotFound.css"
-import {pages} from "./Contexts/PagesContext"
-import { useContext } from "react"
+import notfounddark from "./assets/images/notfounddark.png"
+import notfound from "./assets/images/notfound.png"
 
-export default function NotFound(){
-    const{darkMode}=useContext(pages)
+export default function NotFound({darkMode}){
     return (<>
     <div className="cont-404">
-        <div><img src={darkMode?"/image.png":"/notfound.png"}/></div>
+        <div><img src={darkMode?notfounddark:notfound}/></div>
         <div>
             <h1>Page Not Found</h1>
             <p>The page you are looking for might have been removed,

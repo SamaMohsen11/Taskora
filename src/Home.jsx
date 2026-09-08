@@ -5,10 +5,12 @@ import { pages } from "./Contexts/PagesContext";
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutlineOutlined";
 import DoneAllIcon from '@mui/icons-material/DoneAll';
+import image from "./assets/images/image.png"
+import imagedark from "./assets/images/imagedark.png"
 
-export default function Home(){
+export default function Home({darkMode}){
 
-    const { addNewPage,darkMode } = useContext(pages);
+    const { addNewPage } = useContext(pages);
     const navigate = useNavigate();
 
     const handleNewPage = () => {
@@ -23,7 +25,7 @@ export default function Home(){
 
     <div className="hero">
         <div className="image">
-            <img src={darkMode?"/image-dark.png":"/image-light.png"}/>
+            <img src={darkMode?imagedark:image}/>
         </div>
 
         <div className="info">

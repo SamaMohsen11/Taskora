@@ -4,7 +4,6 @@ inset: 0;
 display: flex; 
 justify-content: center; 
 align-items: center; 
-/* background: red; */ 
 z-index: 1000000; 
  
 } 
@@ -34,15 +33,12 @@ z-index: 1000000;
     -ms-border-radius: 20px; 
     -o-border-radius: 20px; 
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08); 
-    /* padding: 20px; */ 
+     
 } 
 .delete-btns{ 
     width: 80%; 
     height: 35px; 
-     
-    /* background: red; */ 
     display: flex; 
-    /* gap: 5px; */ 
     justify-content: space-evenly; 
 } 
 .delete-btns button{ 

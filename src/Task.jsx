@@ -33,7 +33,8 @@ export default function Task({task}){
   }
   function updatetask(){
 
-    const updatedPages=pageData.map((page)=>{
+   if(updateValue.trim()!==""){
+        const updatedPages=pageData.map((page)=>{
       return {...page,tasks:page.tasks.map((item)=>{
          if(item.id===task.id){
           return {...item,title:updateValue}
@@ -46,14 +47,18 @@ export default function Task({task}){
       }
   )}
     })
-      setPageData(updatedPages);
+  setPageData(updatedPages);
   setUpdOpen(false);
+   }
+   else{
+    return ;
+   }
   }
     
     return(
         <>
           {delopen&&<DeletePopUp deleteTask={deleteTask} setOpen={setDelOpen}/>} 
-          <div>{updopen&&< UpdatePopUp UpdatePopUp={updatetask} setOpen={setUpdOpen} tasktitle={task.title}  updateValue={updateValue} setUpdateValue={setUpdateValue}/>} </div>
+          <div>{updopen&&< UpdatePopUp UpdatePopUp={updatetask} setOpen={setUpdOpen}   updateValue={updateValue} setUpdateValue={setUpdateValue}/>} </div>
         <div className="task-content">
 
 <div className={`left ${task.completed?"check":""}`}>
@@ -62,7 +67,7 @@ export default function Task({task}){
 <h2>{task.title}</h2>
 </div>
 <div className="right">
-<EditIcon  className="edit" onClick={()=>setUpdOpen(true)}/>
+<EditIcon  className="edit" onClick={()=>{setUpdOpen(true);setUpdateValue(task.title)}}/>
 <DeleteIcon className="delete" onClick={()=>{setDelOpen(true)}}  />
 </div>
 
