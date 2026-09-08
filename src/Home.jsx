@@ -31,7 +31,7 @@ export default function Home({darkMode}){
         <div className="info">
             <h1>
                 Welcome to Taskora!<br />
-                You don't have any pages yet.👋
+                You don't have any pages yet.
             </h1>
 
             <p>
