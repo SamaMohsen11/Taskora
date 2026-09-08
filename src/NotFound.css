@@ -59,3 +59,54 @@ flex-direction: column;
 .cont-404 div:nth-child(2) button:hover {
   background: var(--primary-hover);
 }
+
+@media (max-width: 1024px) {
+  .cont-404 div:nth-child(1) {
+    width: 90%;
+    height: 500px;
+  }
+
+  .cont-404 div:nth-child(2) {
+    height: 250px;
+  }
+
+  .cont-404 div:nth-child(2) h1 {
+    font-size: 30px;
+  }
+
+  .cont-404 div:nth-child(2) p {
+    font-size: 15px;
+    text-align: center;
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 767px) {
+ .cont-404 div:nth-child(1) {
+    width: 95%;
+    height: 280px;
+}
+
+  .cont-404 div:nth-child(2) {
+    height: auto;
+    padding: 0 15px 30px;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .cont-404 div:nth-child(2) h1 {
+    font-size: 26px;
+  }
+
+  .cont-404 div:nth-child(2) p {
+    font-size: 14px;
+    line-height: 1.5;
+    max-width: 350px;
+  }
+
+  .cont-404 div:nth-child(2) button {
+    width: 180px;
+    height: 40px;
+    font-size: 15px;
+  }
+}
