@@ -177,7 +177,7 @@ a:hover{
 
   .logo {
     width: auto;
-    max-width: 55%;
+    max-width: none;
   }
 
   .header div:nth-child(2) {
@@ -188,5 +188,6 @@ a:hover{
 
   .toggle-btn {
     padding: 3px;
+    flex-shrink: 0;
   }
 }
